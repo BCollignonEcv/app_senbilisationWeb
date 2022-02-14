@@ -1,10 +1,22 @@
-<script setup>
-import TheWelcome from '@/components/TheWelcome.vue'
+<script>
+
+import SectionComponent from '@/components/layers/section.layer.vue'
+export default {
+  name: 'Homepage',
+  components: {
+    SectionComponent
+  }
+}
 </script>
 
 <template>
-  <main>
-    <h1>Utilisez vous Internet de manière sécurisé ?</h1>
-    <button>Lancer le test</button>
-  </main>
+  <SectionComponent :type="'splited'">
+    <template #left>
+      <h1>Web danger awareness assessment</h1>
+      <p></p>
+    </template>
+    <template #right>
+      <RouterLink to="/questions"><button>Start</button></RouterLink>
+    </template>
+  </SectionComponent>
 </template>

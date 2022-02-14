@@ -1,0 +1,56 @@
+:root {
+  --c-0: #fff;
+  --c-1: #016FB9;
+  --c-2: #FBF2C0;
+  --c-3: #5b8c5a; 
+  --c-4: #182825; 
+  --c-5: #f96f5d; 
+}
+
+:root {
+  --background-color-primary: var(--c-4);
+  --background-color-secondary: var(--c-2);
+  --background-color-tertiary: var(--c-4);
+  --background-color-active: var(--c-5);
+  --text-color-primary: var(--c-0);
+  --text-color-secondary: var(--c-4);
+  --text-color-tertiary: var(--c-5);
+}
+
+.style-color-primary{
+  background-color: var(--background-color-primary);
+  color: var(--text-color-primary);
+}
+
+.style-color-secondary{
+  background-color: var(--background-color-secondary);
+  color: var(--text-color-secondary);
+}
+
+.style-color-tertiary{
+  background-color: var(--background-color-tertiary);
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-color-primary);
+  background: var(--background-color-primary);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
