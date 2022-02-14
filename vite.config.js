@@ -13,4 +13,5 @@ export default defineConfig({
                 import.meta.url))
         }
     },
+    base: '/app_senbilisationweb/'
 })
