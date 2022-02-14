@@ -1,7 +1,7 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
-import Header from '@/components/Header.vue'
-import Footer from '@/components/Footer.vue'
+import Header from '@/components/global.components/Header.vue'
+import Footer from '@/components/global.components/Footer.vue'
 
 export default {
     name: 'HomePage',

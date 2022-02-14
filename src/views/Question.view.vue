@@ -1,15 +1,16 @@
 <script>
 
-import SectionComponent from '@/components/layers/section.layer.vue'
-import AssessmentNavigation from '@/components/AssessmentNavigation.vue'
-import Proposition from '@/components/Proposition.vue'
-import Correction from '@/components/Correction.vue'
+import SectionComponent from '@/components/layer.components/section.layer.vue'
+import ButtonComponent from '@/components/form.components/button.form.vue'
+import AssessmentNavigation from '@/components/assessment.components/AssessmentNavigation.vue'
+import Proposition from '@/components/assessment.components/Proposition.vue'
+import Correction from '@/components/assessment.components/Correction.vue'
 import { useAssessmentStore } from '@/stores/useAssessment.store'
 
 export default {
     name: 'Question',
     components: {
-        SectionComponent, AssessmentNavigation, Proposition, Correction
+        SectionComponent, ButtonComponent, AssessmentNavigation, Proposition, Correction
     },
     props: ['id'],
     data(){
@@ -67,13 +68,13 @@ export default {
                     <Proposition :proposition="proposition" @click="validateQuestion(proposition.id)"/>
                 </template>
             </div>
-            <div v-else>
+            <template v-else>
                 <Correction :question="assessmentStore.currentQuestion">
                     <template #actions>
-                        <button @click="nextQuestion">Continue</button>
+                        <ButtonComponent :type="'large'" @click="nextQuestion">Continue</ButtonComponent>
                     </template>
                 </Correction>
-            </div>
+            </template>
         </template>
     </SectionComponent>
 </template>

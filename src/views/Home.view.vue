@@ -1,22 +1,32 @@
 <script>
 
-import SectionComponent from '@/components/layers/section.layer.vue'
+import SectionComponent from '@/components/layer.components/section.layer.vue'
+import ButtonComponent from '@/components/form.components/button.form.vue'
+
 export default {
   name: 'Homepage',
   components: {
-    SectionComponent
+    SectionComponent, ButtonComponent
   }
 }
 </script>
 
 <template>
-  <SectionComponent :type="'splited'">
+  <SectionComponent :type="'splited'" :height="'fullHeight'">
     <template #left>
       <h1>Web danger awareness assessment</h1>
-      <p></p>
     </template>
     <template #right>
-      <RouterLink to="/questions"><button>Start</button></RouterLink>
+      <p></p>
+      <RouterLink to="/questions">
+        <ButtonComponent :type="'large'">Start assessment</ButtonComponent>
+      </RouterLink>
     </template>
   </SectionComponent>
 </template>
+
+<style lang="scss">
+  .container {
+      padding: 48px;
+  }
+</style>

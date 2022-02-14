@@ -1,6 +1,6 @@
 <script>
 
-import SectionComponent from '@/components/layers/section.layer.vue'
+import SectionComponent from '@/components/layer.components/section.layer.vue'
 import { useAssessmentStore } from '@/stores/useAssessment.store'
 
 export default {
