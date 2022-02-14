@@ -1,10 +1,10 @@
 <template>
   <section :class="classObject">
       <template v-if="type === 'splited'">
-          <div class="half">
+          <div class="half left-section">
             <slot name="left" ></slot>
           </div>
-        <div class="half">
+        <div class="half right-section">
             <slot name="right" ></slot>
           </div>
       </template>
@@ -55,32 +55,38 @@ export default {
 }
 </script>
 
-<style>
-section.fullHeight{
-    height: 100vh;
-}
+<style lang="scss">
 
-section.splited {
-    display: flex;    
-}
+section {
+    &.fullHeight{
+        height: 100vh;
+    }
 
-section.splited .half{
-    width: 50vw;
-    height: 100%;
-}
+    &.splited {
+        display: flex;
 
-section.splited .half > *{
-    width: 100%;
-    height: 100%;
-    padding: 48px;
-}
+        .half{
+            width: 50vw;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
-section.splited .left-container{
-    background-color: red;
-}
+            a .btn-large {
+                width: 100%;
+                align-self: flex-end;
+            }
+        }
 
-section.splited .right-container{
-    background-color: green;
+        .left-section{
+            padding: 48px;
+        }
+
+        .right-section{
+            background-color: var(--c-2);
+            color: var(--c-4)
+        }
+    }
 }
 
 </style>
