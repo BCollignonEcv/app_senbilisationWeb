@@ -1,0 +1,1 @@
+import{_ as e}from"./index.716fcbcf.js";import{o,c as n}from"./vendor.76321782.js";const t={name:"404",components:{}};function r(a,c,s,p,_,m){return o(),n("p",null,"You have been hacked")}var d=e(t,[["render",r]]);export{d as default};
