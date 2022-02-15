@@ -15,19 +15,18 @@ export default {
 </script>
 
 <style lang="scss">
+
     .proposition{
-        padding: 48px;
-        transition: all 1s ease;
-        background-color: var(--background-color-secondary);
-        color: var(--text-color-secondary);
+        @include bg-color-tertiary;
+        @include transition-primary;
+        padding: var(--m-1);
+        cursor: pointer;
         display: flex;
         flex-direction: column;
         &:hover{
-            cursor: pointer;
             margin-left: 36px;
-            background-color: var(--c-3);
+            background-color: var(--c-4);
             transition: all 1s ease;
-            box-shadow: -10px 0px 15px 2px rgba(0,0,0,0.75);
             z-index: 2;
         }
 
@@ -42,7 +41,7 @@ export default {
         }
 
         &~.proposition{
-            border-top: 1px solid rgb(165, 165, 165);
+            border-top: 1px solid var(--cb-n);
         }
     }
 </style>

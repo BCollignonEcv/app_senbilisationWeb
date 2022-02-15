@@ -273,7 +273,17 @@ export const useAssessmentStore = defineStore({
       return (id) => !!state.assessment.questions[id]
     },
     getNumberOfQuestions: (state) => {
-        return state.assessment.questions.length;
+        return Object.keys(state.assessment.questions).length;
+    },
+    getNumberOfCorrectAnswer: (state) => {
+        let i = 0;
+        for (const [key, question] of Object.entries(state.assessment.questions)) {
+          console.log(question.userAnswer, question.answer)
+          if(question.userAnswer){
+            i++;
+          }
+        }
+        return i;
     }
   },
   actions: {
@@ -284,7 +294,6 @@ export const useAssessmentStore = defineStore({
       }
     },
     validateQuestion(userAnswer){
-      console.log(this.currentQuestion.answer, userAnswer, this.currentQuestion.answer === userAnswer)
       let result = this.currentQuestion.answer === userAnswer ? true : false;
       this.currentQuestion.userAnswer = result;
       this.assessment.questions[this.currentQuestion.id].userAnswer = result;
@@ -297,6 +306,9 @@ export const useAssessmentStore = defineStore({
       }else{
         this.status = 'END'
       }
+    },
+    generateResult(){
+      
     }
   }
 })

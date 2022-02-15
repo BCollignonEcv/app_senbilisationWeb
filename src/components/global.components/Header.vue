@@ -1,10 +1,6 @@
 <template>
   <header class="header-navigation">
-      <nav>
-          <ul>
-                <li><RouterLink to="/">Home</RouterLink></li>
-          </ul>
-      </nav>
+    <h1><RouterLink to="/">Web danger awareness assessment</RouterLink></h1>
   </header>
 </template>
 
@@ -14,16 +10,21 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 
-  .header-navigation {
-      width: 100vw;
-      height: 48px;
-      padding-left: 16px;
-      display: flex;
-      align-items: center;
-  }
+.header-navigation {
+    height: var(--header-size);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--cb-n);
 
-  .header-navigation nav{}
+    h1{
+      padding-left: var(--m-1);
+    }
+}
 
 </style>
