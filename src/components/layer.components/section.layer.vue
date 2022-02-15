@@ -73,18 +73,19 @@ section {
             justify-content: space-between;
 
             a .btn-large {
-                width: 100%;
                 align-self: flex-end;
             }
         }
 
         .left-section{
-            padding: 48px;
+            .content{
+                margin-top: var(--header-size);
+                padding: var(--m-1);
+            }
         }
 
         .right-section{
-            background-color: var(--c-2);
-            color: var(--c-4)
+            @include bg-color-dark;
         }
     }
 }

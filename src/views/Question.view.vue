@@ -32,7 +32,6 @@ export default {
     },
     methods: {
         validateQuestion(propositionID){
-            console.log(propositionID)
             this.correctionMode = true;
             this.assessmentStore.validateQuestion(propositionID);
         },
@@ -46,18 +45,13 @@ export default {
             }
         }
     },
-    watch: {
-        question: () => {
-            console.log('toto')
-        }
-    }
 }
 </script>
 
 <template>
     <SectionComponent :type="'splited'" :height="'fullHeight'">
         <template #left>
-            <div>
+            <div class="content">
                 <AssessmentNavigation :questions="assessmentStore.assessment.questions"/>   
                 <h1>Question {{assessmentStore.currentQuestion.id}} :</h1>
             </div>

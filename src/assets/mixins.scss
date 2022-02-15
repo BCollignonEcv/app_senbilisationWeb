@@ -1,0 +1,49 @@
+@mixin bg-color-primary {
+    background-color: var(--c-0);
+    color: var(--c-1);
+}
+
+@mixin bg-color-secondary {
+    background-color: var(--c-0);
+    color: var(--c-2);
+}
+
+@mixin bg-color-tertiary {
+    background-color: var(--c-1);
+    color: var(--c-0);
+}
+
+@mixin bg-color-dark {
+    background-color: var(--c-1);
+    color: var(--c-0);
+}
+
+@mixin bg-color-active {
+    background-color: var(--c-2);
+    color: var(--c-0);
+}
+
+@mixin border-primary {
+    border-color: var(--c-1);
+}
+
+@mixin border-secondary {
+    border-color: var(--c-2);
+}
+
+@mixin border-tertiary {
+    border-color: var(--c-3);
+}
+
+@mixin border-active {
+    border-color: var(--c-4);
+}
+
+@mixin transition-primary {
+    transition: all 1s ease;
+}
+
+@mixin transition-secondary {
+    transition: all 1s ease;
+}
+
