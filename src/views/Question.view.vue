@@ -53,22 +53,25 @@ export default {
         <template #left>
             <div class="content">
                 <AssessmentNavigation :questions="assessmentStore.assessment.questions"/>   
-                <h1>Question {{assessmentStore.currentQuestion.id}} :</h1>
+                <h2>Question {{assessmentStore.currentQuestion.id}} :</h2>
+                <p>{{assessmentStore.currentQuestion.label}}</p>
             </div>
         </template>
         <template #right>
-            <div v-if="assessmentStore.currentQuestion.userAnswer === null" class="propositions">
-                <template v-for="proposition in assessmentStore.currentQuestion.proposals" :key="proposition.id">
-                    <Proposition :proposition="proposition" @click="validateQuestion(proposition.id)"/>
-                </template>
-            </div>
-            <template v-else>
-                <Correction :question="assessmentStore.currentQuestion">
-                    <template #actions>
-                        <ButtonComponent :type="'large'" @click="nextQuestion">Continue</ButtonComponent>
+            <Transition name="slideLeft" mode="out-in">
+                <div v-if="assessmentStore.currentQuestion.userAnswer === null" class="propositions">
+                    <template v-for="proposition in assessmentStore.currentQuestion.proposals" :key="proposition.id">
+                        <Proposition :proposition="proposition" @click="validateQuestion(proposition.id)"/>
                     </template>
-                </Correction>
-            </template>
+                </div>
+                <template v-else>
+                    <Correction :question="assessmentStore.currentQuestion">
+                        <template #actions>
+                            <ButtonComponent :type="'large'" @click="nextQuestion">Continue</ButtonComponent>
+                        </template>
+                    </Correction>
+                </template>
+            </Transition>
         </template>
     </SectionComponent>
 </template>
@@ -86,6 +89,22 @@ export default {
     .propositions > .proposition {
         flex: 1;
         flex-grow: 2;
+    }
+
+    /* we will explain what these classes do next! */
+    .slideLeft-enter-active,
+    .slideLeft-leave-active {
+        transition: all 0.75s ease;
+    }
+
+    .slideLeft-enter-from{
+        opacity: 0;
+        transform: translateY(100vh);
+    }
+
+    .slideLeft-leave-to {
+        opacity: 0;
+        transform: translateY(-100vh);
     }
 
 

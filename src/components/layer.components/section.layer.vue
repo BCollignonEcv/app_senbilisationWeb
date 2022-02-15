@@ -78,6 +78,7 @@ section {
         }
 
         .left-section{
+            z-index: 10;
             .content{
                 margin-top: var(--header-size);
                 padding: var(--m-1);
@@ -86,6 +87,7 @@ section {
 
         .right-section{
             @include bg-color-dark;
+            z-index: 1;
         }
     }
 }

@@ -11,9 +11,8 @@ export default {
     },
     setup() {
       const assessmentStore = useAssessmentStore();
-      assessmentStore.$reset();
       return { assessmentStore }
-  },
+    },
 }
 </script>
 
@@ -26,7 +25,7 @@ export default {
     </template>
     <template #right>
       <p></p>
-      <RouterLink to="/questions">
+      <RouterLink to="/questions/1">
         <ButtonComponent :type="'large'">Start assessment</ButtonComponent>
       </RouterLink>
     </template>
