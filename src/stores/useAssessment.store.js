@@ -1,8 +1,9 @@
 import { defineStore } from 'pinia'
+import { useLocalStorage } from "@vueuse/core";
 
 export const useAssessmentStore = defineStore({
   id: 'assessment',
-  state: () => ({
+  state: () => useLocalStorage('assessment', {
     currentQuestion: null,
     status: 'UNSTART',
     assessment: {
@@ -278,19 +279,30 @@ export const useAssessmentStore = defineStore({
     getNumberOfCorrectAnswer: (state) => {
         let i = 0;
         for (const [key, question] of Object.entries(state.assessment.questions)) {
-          console.log(question.userAnswer, question.answer)
           if(question.userAnswer){
             i++;
           }
         }
         return i;
+    },
+    getFirstUnanswerQuestion: (state) => {
+      for (const [key, question] of Object.entries(state.assessment.questions)) {
+        if(question.userAnswer === null){
+          return key;
+        }
+      }
+      return null;
     }
   },
   actions: {
     startAssessment() {
       if(!this.currentQuestion){
-        this.status = 'START'
-        this.currentQuestion = this.assessment.questions[1];
+        if(this.status === 'UNSTART'){
+          this.status = 'START'
+          this.currentQuestion = this.assessment.questions[1];
+        }else if(this.status === 'START'){
+          this.currentQuestion = this.assessment.questions[this.getFirstUnanswerQuestion()];
+        }
       }
     },
     validateQuestion(userAnswer){
@@ -304,11 +316,18 @@ export const useAssessmentStore = defineStore({
       if(this.hasQuestion(nextID)){
         this.currentQuestion = this.assessment.questions[nextID]
       }else{
-        this.status = 'END'
+        if(this.getFirstUnanswerQuestion){
+          this.currentQuestion = this.assessment.questions[this.getFirstUnanswerQuestion]
+        }else{
+          this.status = 'END'
+        }
       }
     },
     generateResult(){
       
+    },
+    endAssessment(){
+      this.status = 'UNSTART'
     }
   }
 })

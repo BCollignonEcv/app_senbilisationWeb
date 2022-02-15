@@ -13,6 +13,7 @@ export default {
 <style lang="scss">
 
 .header-navigation {
+    z-index: 100;
     height: var(--header-size);
     position: fixed;
     top: 0;

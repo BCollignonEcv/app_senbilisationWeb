@@ -23,6 +23,16 @@
     color: var(--c-0);
 }
 
+@mixin bg-color-valid {
+    background-color: var(--c-4);
+    color: var(--c-0);
+}
+
+@mixin bg-color-error {
+    background-color: var(--c-3);
+    color: var(--c-0);
+}
+
 @mixin border-primary {
     border-color: var(--c-1);
 }

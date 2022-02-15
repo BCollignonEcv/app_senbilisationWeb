@@ -12,7 +12,7 @@ export default {
             type: String,
             default: 'Default'
         },
-        backgroundColor: {
+        typeColor: {
             type: String,
             default: 'Default'
         },
@@ -20,8 +20,8 @@ export default {
     data () {
         return {
             allowedClass: {
-                backgroundColor: ['Default', 'primary', 'secondary'],
-                type: ['Default', 'large', 'circle'],
+                typeColor: ['Default', 'primary', 'secondary', 'correct', 'incorrect'],
+                type: ['Default', 'large', 'circle', 'round'],
             }
         }
     },
@@ -47,14 +47,17 @@ export default {
 <style lang="scss">
 
 button.btn{
-    @include bg-color-active;
+    @include bg-color-tertiary;
     font-weight: bold;
     transition: all .25s ease-in-out;
     cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
 
     &.btn-round{
         @include bg-color-primary;
         @include border-primary;
+        padding: 0;
         border: 1px solid;
         border-radius: 25%;
         height: 36px;
@@ -73,6 +76,20 @@ button.btn{
     &.btn-large{
         width: 100%;
         padding: 36px;
+    }
+
+    &.btn-correct{
+        @include bg-color-valid;
+        &:hover, &:focus{
+            border: none;
+        }
+    }
+
+    &.btn-incorrect{
+        @include bg-color-error;
+        &:hover, &:focus{
+            border: none;
+        }
     }
 
     &:hover, &:focus{
