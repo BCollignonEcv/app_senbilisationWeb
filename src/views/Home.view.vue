@@ -1,13 +1,13 @@
 <script>
 
 import SectionComponent from '@/components/layer.components/section.layer.vue'
-import ButtonComponent from '@/components/form.components/button.form.vue'
+import Starter from '@/components/assessment.components/Starter.vue'
 import { useAssessmentStore } from '@/stores/useAssessment.store'
 
 export default {
     name: 'Homepage',
     components: {
-      SectionComponent, ButtonComponent
+      SectionComponent, Starter
     },
     setup() {
       const assessmentStore = useAssessmentStore();
@@ -25,9 +25,7 @@ export default {
     </template>
     <template #right>
       <p></p>
-      <RouterLink to="/questions/1">
-        <ButtonComponent :type="'large'">Start assessment</ButtonComponent>
-      </RouterLink>
+      <Starter/>
     </template>
   </SectionComponent>
 </template>

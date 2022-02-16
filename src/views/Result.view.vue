@@ -13,6 +13,12 @@ export default {
         const assessmentStore = useAssessmentStore();
         return { assessmentStore }
     },
+    methods: {
+        endAssessment(){
+            this.assessmentStore.resetAssessment();
+            this.$router.push('/');
+        }
+    }
 
 }
 </script>
@@ -23,9 +29,7 @@ export default {
             <div class="content">
                 <p>Result Page</p>
             </div>
-            <RouterLink to="/">
-                <ButtonComponent :type="'large'" @click="nextQuestion">Back to home</ButtonComponent>
-            </RouterLink>
+            <ButtonComponent :type="'large'" @click="endAssessment()">Back to home</ButtonComponent>
         </template>
         <template #right>
             <div>
