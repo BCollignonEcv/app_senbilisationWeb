@@ -53,7 +53,7 @@ export default {
         <template #left>
             <div class="content">
                 <AssessmentNavigation :questions="assessmentStore.assessment.questions"/>   
-                <h2>Question {{assessmentStore.currentQuestion.id}} :</h2>
+                <!-- <h2>Question {{assessmentStore.currentQuestion.id}} :</h2> -->
                 <p>{{assessmentStore.currentQuestion.label}}</p>
             </div>
         </template>

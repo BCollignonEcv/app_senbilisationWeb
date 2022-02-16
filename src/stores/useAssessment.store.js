@@ -326,8 +326,15 @@ export const useAssessmentStore = defineStore({
     generateResult(){
       
     },
-    endAssessment(){
-      this.status = 'UNSTART'
+    // Create resetAssessment as $reset does not work with local storage
+    resetAssessment(){
+      window.localStorage.clear();
+      this.$reset();
+      this.status = 'UNSTART';
+      this.currentQuestion = null;
+      for (const [key, question] of Object.entries(this.assessment.questions)) {
+        this.assessment.questions[key].userAnswer = null;
+      }
     }
   }
-})
+});

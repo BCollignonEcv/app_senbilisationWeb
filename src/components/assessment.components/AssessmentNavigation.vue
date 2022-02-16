@@ -5,7 +5,7 @@
                 <ButtonComponent :type="'round'" :typeColor="haveAnswer(question)">{{question.id}}</ButtonComponent>
             </RouterLink>
         </template>
-        <ButtonComponent @click="endAssessment()">Quitter</ButtonComponent>
+        <ButtonComponent @click="resetAssessment()">Quitter</ButtonComponent>
     </div>
 </template>
 
@@ -35,8 +35,9 @@ export default {
                 return 'incorrect';
             }
         },
-        endAssessment(){
+        resetAssessment(){
             this.$router.push('/')
+            this.assessmentStore.resetAssessment();
         }
     }
 }
