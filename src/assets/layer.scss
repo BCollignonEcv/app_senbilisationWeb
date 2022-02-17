@@ -1,7 +1,11 @@
-.flex_container{
+.flexContainer{
     display: flex;
-}
 
-.flex_container.horizontal{
-    flex-direction: column;
+    &>*{
+        flex: 1;
+    }
+
+    &.horizontal{
+        flex-direction: column;
+    }
 }

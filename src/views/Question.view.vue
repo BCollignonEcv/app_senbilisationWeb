@@ -3,6 +3,7 @@
 import SectionComponent from '@/components/layer.components/section.layer.vue'
 import ButtonComponent from '@/components/form.components/button.form.vue'
 import AssessmentNavigation from '@/components/assessment.components/AssessmentNavigation.vue'
+import AssessmentActions from '@/components/assessment.components/AssessmentActions.vue'
 import Proposition from '@/components/assessment.components/Proposition.vue'
 import Correction from '@/components/assessment.components/Correction.vue'
 import { useAssessmentStore } from '@/stores/useAssessment.store'
@@ -10,7 +11,7 @@ import { useAssessmentStore } from '@/stores/useAssessment.store'
 export default {
     name: 'Question',
     components: {
-        SectionComponent, ButtonComponent, AssessmentNavigation, Proposition, Correction
+        SectionComponent, ButtonComponent, AssessmentNavigation, Proposition, Correction, AssessmentActions
     },
     props: ['id'],
     data(){
@@ -35,15 +36,6 @@ export default {
             this.correctionMode = true;
             this.assessmentStore.validateQuestion(propositionID);
         },
-        nextQuestion(){
-            this.correctionMode = false
-            this.assessmentStore.nextQuestion();
-            if (this.assessmentStore.status === 'END'){
-                this.$router.push(`/results`)
-            } else {
-                this.$router.push(`/questions/${this.assessmentStore.currentQuestion.id}`)
-            }
-        }
     },
 }
 </script>
@@ -53,7 +45,7 @@ export default {
         <template #left>
             <div class="content">
                 <AssessmentNavigation :questions="assessmentStore.assessment.questions"/>   
-                <!-- <h2>Question {{assessmentStore.currentQuestion.id}} :</h2> -->
+                <h2>Question {{assessmentStore.currentQuestion.id}} :</h2>
                 <p>{{assessmentStore.currentQuestion.label}}</p>
             </div>
         </template>
@@ -67,7 +59,7 @@ export default {
                 <template v-else>
                     <Correction :question="assessmentStore.currentQuestion">
                         <template #actions>
-                            <ButtonComponent :type="'large'" @click="nextQuestion">Continue</ButtonComponent>
+                            <AssessmentActions />
                         </template>
                     </Correction>
                 </template>

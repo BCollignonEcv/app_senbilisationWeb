@@ -85,6 +85,10 @@ button.btn{
         }
     }
 
+    &.btn-secondary{
+        @include bg-color-active;
+    }
+
     &.btn-incorrect{
         @include bg-color-error;
         &:hover, &:focus{

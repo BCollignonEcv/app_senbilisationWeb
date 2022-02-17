@@ -1,13 +1,13 @@
 <script>
 
 import SectionComponent from '@/components/layer.components/section.layer.vue'
-import Starter from '@/components/assessment.components/Starter.vue'
+import AssessmentActions from '@/components/assessment.components/AssessmentActions.vue'
 import { useAssessmentStore } from '@/stores/useAssessment.store'
 
 export default {
     name: 'Homepage',
     components: {
-      SectionComponent, Starter
+      SectionComponent, AssessmentActions
     },
     setup() {
       const assessmentStore = useAssessmentStore();
@@ -25,7 +25,7 @@ export default {
     </template>
     <template #right>
       <p></p>
-      <Starter/>
+      <AssessmentActions/>
     </template>
   </SectionComponent>
 </template>
