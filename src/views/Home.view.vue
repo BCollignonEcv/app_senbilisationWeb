@@ -13,6 +13,11 @@ export default {
       const assessmentStore = useAssessmentStore();
       return { assessmentStore }
     },
+    methods: {
+      goTo404(){
+        this.$router.push('/404')
+      }
+    }
 }
 </script>
 
@@ -21,6 +26,8 @@ export default {
     <template #left>
       <div class="content">
         <p>Everyone is using internet more and more, bad people know it and may try to get you down.</p>
+        <br>
+        <p>Never forget, press key <kbd @click="goTo404">esc</kbd> if something strange append !</p>
       </div>
     </template>
     <template #right>

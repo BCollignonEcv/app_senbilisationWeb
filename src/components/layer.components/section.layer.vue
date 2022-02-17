@@ -8,6 +8,11 @@
             <slot name="right" ></slot>
           </div>
       </template>
+      <template v-if="type === 'Default'">
+          <div class="content">
+                <slot></slot>
+          </div>
+      </template>
   </section>
 </template>
 
@@ -89,6 +94,11 @@ section {
             @include bg-color-dark;
             z-index: 1;
         }
+    }
+
+    &>.content{
+        margin-top: var(--header-size);
+        padding: var(--m-1);
     }
 }
 
