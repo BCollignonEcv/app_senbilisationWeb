@@ -6,14 +6,22 @@ export default {
 
   },
   mounted(){
-    () => {
-      console.log(this)
-      // this.$refs['fullscreen'].requestFullscreen();
-    }
+      document.body.requestFullscreen();
   }
 }
 </script>
 
 <template >
-  <p>You have been hacked</p>
+  <figure>
+    <img ref="fakeError" class="img-full" src="/img/fakeError.png" alt="" srcset="">
+  </figure>
 </template>
+
+<style lang="scss" scoped>
+  img{
+    &.img-full{
+      width: 100%;
+      height: auto;
+    }
+  }
+</style>
