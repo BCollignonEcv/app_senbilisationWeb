@@ -38,7 +38,7 @@ export default {
             allowedClass: {
                 backgroundColor: ['Default', 'primary', 'secondary'],
                 type: ['Default', 'splited'],
-                height: ['Default', 'fullHeight', '75', '66', '50', '33'],
+                height: ['Default', 'fullHeight', '75', '66', '50', '33', '10'],
             }
         }
     },
@@ -55,7 +55,7 @@ export default {
             return customClassObject;
         }
     },
-    mounted () {
+    mounted () { 
     }
 }
 </script>
@@ -64,7 +64,7 @@ export default {
 
 section {
     &.fullHeight{
-        height: 100vh;
+        height: calc(100vh - var(--header-size));
     }
 
     &.splited {
@@ -91,6 +91,7 @@ section {
         }
 
         .right-section{
+            height: 100vh;
             @include bg-color-dark;
             z-index: 1;
         }

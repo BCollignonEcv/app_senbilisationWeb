@@ -21,10 +21,10 @@ export default {
         return {
             allowedClass: {
                 typeColor: ['Default', 'primary', 'secondary', 'correct', 'incorrect'],
-                type: ['Default', 'large', 'circle', 'round'],
+                type: ['Default', 'large', 'circle', 'round', 'medium', 'small'],
             }
         }
-    },
+    }, 
     computed: {
         classObject() {
             let customClassObject = [];
@@ -76,6 +76,16 @@ button.btn{
     &.btn-large{
         width: 100%;
         padding: 36px;
+    }
+
+    &.btn-medium{
+        width: 50%;
+        padding: 24px;
+    }
+
+    &.btn-small{
+        width: 30%;
+        padding: 12px;
     }
 
     &.btn-correct{

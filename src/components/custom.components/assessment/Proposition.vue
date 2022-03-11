@@ -1,7 +1,7 @@
 <template>
     <div class="proposition">
-        <p class="title">Proposition {{proposition.id}} :</p>
         <div class="content">
+            <p class="title">{{proposition.id}}.</p>
             <p>{{proposition.label}}</p>
         </div>
     </div>
@@ -14,7 +14,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 
     .proposition{
         @include bg-color-tertiary;
@@ -32,16 +32,20 @@ export default {
 
         .title {
             font-weight: bold;
+            font-size: var(--fs-1);
+            padding-right: var(--m-1);
+            color: var(--c-0-75)
         }
 
         .content{
+            margin-left: var(--m-1);
             display: flex;
             align-items: center;
             flex-grow: 4;
         }
 
         &~.proposition{
-            border-top: 1px solid var(--cb-n);
+            border-top: 1px solid var(--c-0-25);
         }
     }
 </style>

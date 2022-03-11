@@ -49,6 +49,30 @@
     border-color: var(--c-4);
 }
 
+@mixin borderContainer($color: 'neutral', $opacity: 1) {
+    $appendOpacity: '';
+    @if $opacity !=1 {
+        $appendOpacity: '-'+$opacity
+    }
+    border: 1px solid;
+    border-radius: 15px;
+    @if $color=='neutral' {
+        border-color: var(--c-0+$appendOpacity);
+    }
+    @if $color=='primary' {
+        border-color: var(--c-1+$appendOpacity);
+    }
+    @if $color=='secondary' {
+        border-color: var(--c-2+$appendOpacity);
+    }
+    @if $color=='error' {
+        border-color: var(--c-3);
+    }
+    @if $color=='correct' {
+        border-color: var(--c-4);
+    }
+}
+
 @mixin transition-primary {
     transition: all 1s ease;
 }
@@ -57,3 +81,6 @@
     transition: all 1s ease;
 }
 
+@mixin font-secondary {
+    font-family: var(--font-secondary);
+}

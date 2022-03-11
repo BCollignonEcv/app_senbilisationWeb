@@ -16,11 +16,9 @@ export default defineConfig({
     base: '/app_senbilisationWeb/',
     css: {
         preprocessorOptions: {
-          scss: {
-            additionalData: `
-            @import "@/assets/mixins.scss";
-            `
-          }
+            scss: {
+                additionalData: `@import "@/assets/scss/mixins.scss";`
+            }
         }
-      }
+    }
 })

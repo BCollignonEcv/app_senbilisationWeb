@@ -1,10 +1,11 @@
 <script>
-import SectionComponent from '@/components/layer.components/section.layer.vue'
+import { Section } from '@/components/layer.components'
+import { Button } from '@/components/form.components'
 
 export default {
   name: '404',
   components: {
-    SectionComponent
+    Section, Button
   },
   mounted(){
       document.body.requestFullscreen();
@@ -23,9 +24,10 @@ export default {
   <figure>
     <img ref="fakeError" class="img-full" src="/img/fakeError.png" alt="" srcset="">
   </figure>
-  <SectionComponent>
+  <Section>
       <p>Well done, that was a fake error, but you are still on a 404 page...</p>
-  </SectionComponent>
+      <RouterLink to="/questions"><Button :type="'medium'" :typeColor="'correct'">Back to assessment</Button></RouterLink>
+  </Section>
 </template>
 
 <style lang="scss" scoped>
