@@ -1,17 +1,15 @@
 <script>
 
-import SectionComponent from '@/components/layer.components/section.layer.vue'
-import ButtonComponent from '@/components/form.components/button.form.vue'
-import AssessmentNavigation from '@/components/assessment.components/AssessmentNavigation.vue'
-import AssessmentActions from '@/components/assessment.components/AssessmentActions.vue'
-import Proposition from '@/components/assessment.components/Proposition.vue'
-import Correction from '@/components/assessment.components/Correction.vue'
+import { Section } from '@/components/layer.components'
+import { Image } from '@/components/basic.components'
+import { AssessmentNavigation, AssessmentActions, Proposition, Correction} from '@/components/custom.components/assessment'
 import { useAssessmentStore } from '@/stores/useAssessment.store'
 
 export default {
     name: 'Question',
     components: {
-        SectionComponent, ButtonComponent, AssessmentNavigation, Proposition, Correction, AssessmentActions
+        Section, Image,
+        AssessmentNavigation, Proposition, Correction, AssessmentActions
     },
     props: ['id'],
     data(){
@@ -27,9 +25,14 @@ export default {
         this.$router.push(`/questions/${this.assessmentStore.currentQuestion.id}`)
     },
     mounted () {
+        
     },
     updated(){
         this.assessmentStore.nextQuestion(this.id)
+        if(this.assessmentStore.currentQuestion.userAnswer === null && this.assessmentStore.currentQuestion.fakeRedirect){
+            this.validateQuestion(1);
+            this.$router.push(`/404`)
+        }
     },
     methods: {
         validateQuestion(propositionID){
@@ -41,12 +44,16 @@ export default {
 </script>
 
 <template>
-    <SectionComponent :type="'splited'" :height="'fullHeight'">
+    <Section :type="'splited'" :height="'fullHeight'">
         <template #left>
-            <div class="content">
+            <div class="content question">
                 <AssessmentNavigation :questions="assessmentStore.assessment.questions"/>   
-                <h2>Question {{assessmentStore.currentQuestion.id}} :</h2>
+                <h2 class="question-title">Question {{assessmentStore.currentQuestion.id}} :</h2>
                 <p>{{assessmentStore.currentQuestion.label}}</p>
+                <template v-if="assessmentStore.currentQuestion.img">
+                    <Image v-if="assessmentStore.currentQuestion.userAnswer != null && assessmentStore.currentQuestion.img.correction" :size="'fullWidth'" :filename="`question-${assessmentStore.currentQuestion.id}-correction.png`"/>
+                    <Image v-else :size="'fullWidth'" :filename="`question-${assessmentStore.currentQuestion.id}.png`"/>
+                </template>
             </div>
         </template>
         <template #right>
@@ -59,16 +66,16 @@ export default {
                 <template v-else>
                     <Correction :question="assessmentStore.currentQuestion">
                         <template #actions>
-                            <AssessmentActions />
+                            <AssessmentActions :next="true"/>
                         </template>
                     </Correction>
                 </template>
             </Transition>
         </template>
-    </SectionComponent>
+    </Section>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
     section.splited .half .propositions{
         height: 100%;
         padding: 0;
@@ -81,6 +88,12 @@ export default {
     .propositions > .proposition {
         flex: 1;
         flex-grow: 2;
+    }
+
+    .question{
+        & &-title{
+            margin-bottom: var(--m-5);
+        }
     }
 
     /* we will explain what these classes do next! */

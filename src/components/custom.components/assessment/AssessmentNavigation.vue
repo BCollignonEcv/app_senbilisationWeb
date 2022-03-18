@@ -2,22 +2,22 @@
     <div class="assessmentNavigation">
         <template v-for="question in questions" :key="question.id">
             <RouterLink :to="`/questions/${question.id}`">
-                <ButtonComponent :type="'round'" :typeColor="haveAnswer(question)">{{question.id}}</ButtonComponent>
+                <Button :type="'round'" :typeColor="haveAnswer(question)">{{question.id}}</Button>
             </RouterLink>
         </template>
-        <ButtonComponent @click="resetAssessment()">Quitter</ButtonComponent>
+        <Button @click="resetAssessment()">Quitter</Button>
     </div>
 </template>
 
 <script>
-import ButtonComponent from '@/components/form.components/button.form.vue'
+import { Button } from '@/components/form.components'
 import { useAssessmentStore } from '@/stores/useAssessment.store'
 
 export default {
     name: 'assessmentNavigation',
     props: ['questions'],
     components: {
-        ButtonComponent
+        Button
     },
     setup() {
       const assessmentStore = useAssessmentStore();
